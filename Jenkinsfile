@@ -1,11 +1,6 @@
 node {
    def mvnHome
-   stage('Preparation') { // for display purposes
-      // Get some code from a GitHub repository
-      git 'https://github.com/jglick/simple-maven-project-with-tests.git'
-      // Get the Maven tool.
-      // ** NOTE: This 'Maven' Maven tool must be configured
-      // **       in the global configuration.
+   stage('Preparation') {
       mvnHome = tool 'Maven'
    }
    stage('Build') {
@@ -18,6 +13,6 @@ node {
    }
    stage('Results') {
       junit '**/target/surefire-reports/TEST-*.xml'
-      artifactoryUpload()
+      //artifactoryUpload()
    }
 }
